@@ -111,15 +111,15 @@ $(document).ready(function() {
         }
     }
     
-    $(".box").on("click", function() {
+    var doClickStuff = function() {
         //set the box's id to the lastClickedOn variable
         setLastClickedOn(this);
         $(this).off();
         if (firstPlayerTurn) {//it is player 1's turn
-            $(this).css("background-image", "url('x.jpg')");
+            $(this).css("background-image", "url('images/x.jpg')");
             firstPlayerTurn = false;
         } else {//it is player 2's turn
-            $(this).css("background-image", "url('o.jpg')");
+            $(this).css("background-image", "url('images/o.jpg')");
             firstPlayerTurn = true;
         }
         setGamePanel(firstPlayerTurn);
@@ -128,7 +128,7 @@ $(document).ready(function() {
             if (didAPlayerWin) {
                 $(".box").off();
             }
-            if (turnCount >= 9) {
+            if (turnCount >= 9 && !didAPlayerWin) {
                 setGamePanel("Tie");
             }
             if (didAPlayerWin || turnCount >= 9) {
@@ -137,5 +137,19 @@ $(document).ready(function() {
             }
         }
         turnCount++;
+    }
+    
+    $(".box").on("click", doClickStuff);
+    
+    $(".reset").on("click", function() {
+        $(".playAgain").hide();
+        firstPlayerTurn = true;
+        turnCount = 1;
+        board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        lastClickedOn = null;
+        
+        $(".box").on("click", doClickStuff);
+        $(".box").css("background-image", "url('images/blank.jpg')");
+        $(".gamepanel").html("It's Player 1's turn!<br>Click on any box to start!");
     })
 })

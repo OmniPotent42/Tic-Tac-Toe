@@ -11,6 +11,15 @@ header {
     text-align: center;
 }
 
+button {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 25px;
+    width: 350px;
+    height: 50px;
+}
+
 .boxContainer {
     box-sizing: border-box;
     float: left;
@@ -34,16 +43,19 @@ header {
     box-sizing: inherit;
     border: 2px solid black;
     flex: 1;
-    background-image: url("blank.jpg");
+    background-image: url("images/blank.jpg");
     background-size: contain;
 }
 
-.gamepanel {
+.panelContainer {
     text-align: center;
     line-height: 75px;
+    padding: 20px;
+}
+
+.gamepanel {
     font-size: 50px;
     background-color: lightgray;
-    padding: 20px;
     border: 3px solid black;
 }
 
